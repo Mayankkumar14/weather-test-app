@@ -1,0 +1,8 @@
+.progress {
+  width: 60px !important;
+  height: 60px !important;
+  text-align: center;
+  display: block !important;
+  margin: 0 auto;
+  margin-top: 60px;
+}
