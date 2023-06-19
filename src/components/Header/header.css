@@ -1,0 +1,9 @@
+.header .header-content .offline {
+  margin-top: 19px;
+  font-weight: bold;
+  color: red;
+  background-color: yellow;
+  height: 26px;
+  text-align: center;
+  font-size: 20px;
+}
