@@ -1,46 +1,41 @@
+# Weather Test APP
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Tech stack used:
+- Frontend: React, materialUI and contextAPI
 
-In the project directory, you can run:
+# Used Typescript for type checking. 
 
-### `npm start`
+# Steps to start the App:
+- **Step-1**: Update the following environment variables (You can see the references from  `.env_sample` file)
+  - REACT_APP_WEATHER_API_ENDPOINT: URL of weather API.
+    Default value: `https://us-central1-mobile-assignment-server.cloudfunctions.net/weather`
+  - LOCAL_PROXY: Local Backend Server URL.
+    Deafult value: `http://127.0.0.1:8080`
+  - DEPLOYED_PROXY_SERVER_URL: Deployed backend app URL.   
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  Note: The default values of variables mentioned in file config.ts i.e `/src/utils/config.ts`
+- **Step-2**: Use `npm i` command to install the dependencies.
+- **Step-3**: Use `npm start` to start the server. 
+  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Some points about App architecture:
+- On the local environment, we are using nodeJS proxy server for fetching data from weatherAPI. (due to CORS issue, I have created the server as mentioned in the doc)
 
-### `npm test`
+- These app has following routes:
+  - /cities: For displaying all the cities in alphabatical sorted order.
+  - /cities/hidden: A user can show/hide the city. For this, we have additional route for displaying the hidden cities. 
+  - /cities/:city: This route will display the date-wise temprature data of city in chronological order.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Used localStorage for maintaining the cache. Please have a look at some points below for more technical info:
+  - At first, we are calling an API ad storing the response in localStorage.
+  - If user refresh the page then we are displaying the data from local storage if data exist.
+  - Here, we don't have an API for fetching the tempratures details city wise. So apart from storing cities data, we are also storing tempratures data city wise in localStorage and we are displaying same info on `/cities/:city` route.
 
-### `npm run build`
+- Fetching the Latest Cities Data: If user wants to fetch the latest data. Then on the `/cities` route, we have one button 'Fetch Latest Data'. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- If user is offline, then we are displaying the appropriate message and notification also, in this case, we are displaying the old cache data.
+      
