@@ -1,5 +1,15 @@
 # Weather Test APP
 
+# App deployed 
+- App is deployed on `netlify`.
+URL: https://weather-test-task-react.netlify.app
+
+- Backend app is deployed on `render`
+Backend Endpoint: https://cors-new.onrender.com/https://us-central1-mobile-assignment-server.cloudfunctions.net/weather  
+
+This Backend server is working as a proxy server and It is giving us the response from the mentioned 
+`weather` API.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -10,7 +20,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Used Typescript for type checking. 
 
 # Steps to start the App:
-- **Step-1**: Update the following environment variables (You can see the references from  `.env_sample` file)
+- **Step-1**: Update the following environment variables (You can check `.env` file)
   - REACT_APP_WEATHER_API_ENDPOINT: URL of weather API.
     Default value: `https://us-central1-mobile-assignment-server.cloudfunctions.net/weather`
   - LOCAL_PROXY: Local Backend Server URL.
