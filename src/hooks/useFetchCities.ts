@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { LOCAL_PROXY, WEATHER_API_ENDPOINT } from "../utils/config";
+import { 
+  LOCAL_PROXY, 
+  WEATHER_API_ENDPOINT, 
+  APP_ENV,
+  DEPLOYED_PROXY_SERVER_URL
+} from "../utils/config";
 
 import { CityData, WeatherData } from "../types";
 import { 
@@ -29,9 +34,17 @@ const INITIAL_STATES: InitialStates = {
   error: null
 }
 
+let BASE_URL: string;
+
+if (APP_ENV === 'production') {
+  BASE_URL = `${DEPLOYED_PROXY_SERVER_URL}`
+} else {
+  BASE_URL = `${LOCAL_PROXY}/${WEATHER_API_ENDPOINT}`
+}
+
 const callFetchAPI = async () => {
   try {
-    const response = await fetch(LOCAL_PROXY + WEATHER_API_ENDPOINT)
+    const response = await fetch(BASE_URL)
     
     if (!response.ok) {
       return [null]
@@ -184,4 +197,4 @@ const useFetchCities = () => {
   }
 }
 
-export default useFetchCities
+export default useFetchCities;
