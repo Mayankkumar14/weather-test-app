@@ -1,6 +1,6 @@
 # Weather Test APP
 
-# App deployed 
+# App Deployment 
 - App is deployed on `netlify`.
 URL: https://weather-test-task-react.netlify.app
 
@@ -41,11 +41,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - /cities/:city: This route will display the date-wise temprature data of city in chronological order.
 
 - Used localStorage for maintaining the cache. Please have a look at some points below for more technical info:
-  - At first, we are calling an API ad storing the response in localStorage.
+  - At first, we are calling an API and storing the response in localStorage.
   - If user refresh the page then we are displaying the data from local storage if data exist.
-  - Here, we don't have an API for fetching the tempratures details city wise. So apart from storing cities data, we are also storing tempratures data city wise in localStorage and we are displaying same info on `/cities/:city` route.
+  - Here, we don't have an API for fetching the tempratures details city wise. So apart from storing cities data, we are also storing tempratures data city wise in localStorage and we are displaying this info on `/cities/:city` route.
 
 - Fetching the Latest Cities Data: If user wants to fetch the latest data. Then on the `/cities` route, we have one button 'Fetch Latest Data'. 
 
-- If user is offline, then we are displaying the appropriate message and notification also, in this case, we are displaying the old cache data.
+- If user is offline, then we are displaying the appropriate message and notification Also, we are displaying the old cache data in this case.
       
