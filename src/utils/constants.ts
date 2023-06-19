@@ -6,7 +6,8 @@ export const ERRORS = {
   OFFLINE: 'You\'re Offline!!',
   USE_NETWORK_CONTEXT: 'useNetwork must be used within an NetworkProvider',
   USE_SNACKBAR_CONTEXT: 'useSnackBar must be used within an SnackBarProvider',
-  OFFLINE_TEXT: 'No network is detected. You are seeing the offline cache data!!'
+  OFFLINE_TEXT: 'No network is detected. You are seeing the offline cache data!!',
+  NO_CITY_WEATHER_DATA_FOUND: 'No City Weather Data Found!. Please refresh and try again.'
 }
 
 export const SUCCESS = {

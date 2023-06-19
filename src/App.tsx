@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
-import CityWeatherInformation from './pages/CityTWeatherInformaton/CityWeatherInformation';
+import CityWeatherInformation from './pages/CityWeatherInformaton/CityWeatherInformation';
 import Cities from './pages/Cities/Cities';
 import HiddenCities from './pages/HiddenCities/HiddenCities';
 

@@ -1,25 +1,31 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import { Typography, Grid, Box, Button } from '@mui/material'
+import { Typography, Grid, Box, Button } from '@mui/material';
 
-import WeatherCard from '../../components/WeatherCard/WeatherCard'
-import { CityTempCustomData } from '../../types'
+import WeatherCard from '../../components/WeatherCard/WeatherCard';
+import { CityTempCustomData } from '../../types';
 
-import { getCityTempData } from '../../utils/helper'
-import { ROUTE_PATHS } from '../../utils/constants'
+import { getCityTempData } from '../../utils/helper';
+import { ERRORS, ROUTE_PATHS } from '../../utils/constants';
+
+import './cityWeather.css';
 
 const CityWeatherInformation = () => {
   const { city = '' } = useParams();
   const navigate = useNavigate();
 
-  const [weatherInformation, setWeatherInformation] = useState<CityTempCustomData>();
+  const [weatherInformation, setWeatherInformation] = useState<CityTempCustomData | null>(null);
 
   useEffect(() => {
     const cachedCityTempData = getCityTempData(city);
     setWeatherInformation(cachedCityTempData || '');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  if (weatherInformation !== null && (!weatherInformation || !weatherInformation?.data.length)) {
+    return <div className='no-data'>{ERRORS.NO_CITY_WEATHER_DATA_FOUND}</div>
+  }
 
   return (
     <Box sx={
